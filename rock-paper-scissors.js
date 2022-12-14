@@ -11,22 +11,22 @@ getComputerChoice();
 
 function playRound(playerSelection, computerSelection)
 {
-    if (playerSelection === "Paper" && computerSelection === "Rock") {
+    if (playerSelection === "paper" && computerSelection === "Rock") {
         return "win";
-    } else if (playerSelection === "Paper" && computerSelection === "Scissors") {
+    } else if (playerSelection === "paper" && computerSelection === "Scissors") {
         return "lose";
-    } else if (playerSelection === "Paper" && computerSelection === "Paper") {
+    } else if (playerSelection === "paper" && computerSelection === "Paper") {
         return "tie";
-    } else if (playerSelection === "Rock" && computerSelection === "Paper") {
+    } else if (playerSelection === "rock" && computerSelection === "Paper") {
         return "lose";
-    } else if (playerSelection === "Rock" && computerSelection === "Scissors") {
+    } else if (playerSelection === "rock" && computerSelection === "Scissors") {
         return "win"
-    } else if (playerSelection === "Rock" && computerSelection === "Rock"){
+    } else if (playerSelection === "rock" && computerSelection === "Rock"){
         return "tie";
-    } else if (playerSelection === "Scissors" && computerSelection === "Paper") {
+    } else if (playerSelection === "scissors" && computerSelection === "Paper") {
         return "win";
     }
-    else if (playerSelection === "Scissors" && computerSelection === "Rock") {
+    else if (playerSelection === "scissors" && computerSelection === "Rock") {
         return "lose";
     } else {
         return "tie";
@@ -39,8 +39,9 @@ function game() {
 
     for (let i = 0; i < 5; i++) {
         const playerSelection = prompt("Rock, Paper, or Scissors?");
+        console.log(playerSelection.toLowerCase());
         const computerSelection = getComputerChoice();
-        //console.log("Your competitor chose " + computerSelection);
+        console.log("Your competitor chose " + computerSelection);
         let currentRound = playRound(playerSelection, computerSelection)
         if (currentRound === "win") {
             playerPoints++;
@@ -48,12 +49,12 @@ function game() {
         } else if (currentRound === "lose") {
             computerPoints++;
             console.log("You lost this round.");
-        } else {
+        } else if (currentRound === "tie") {
             console.log("It's a tie");
         }
     } 
     if (playerPoints > computerPoints) {
-        console.log("You won! Lucky ducky!");
+        console.log("You won the game! Lucky ducky!");
         } else {
             console.log("You lost. Better luck next time!");
     }
