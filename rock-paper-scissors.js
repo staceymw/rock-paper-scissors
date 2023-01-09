@@ -33,31 +33,42 @@ function playRound(playerSelection, computerSelection)
     }
 }
 
-function game() {
+function game(event) {
+    const playerSelection = event.path[0].id; 
     let playerPoints = 0;
     let computerPoints = 0;
 
-    for (let i = 0; i < 5; i++) {
-        const playerSelection = prompt("Rock, Paper, or Scissors?");
-        console.log(playerSelection.toLowerCase());
-        const computerSelection = getComputerChoice();
-        console.log("Your competitor chose " + computerSelection);
-        let currentRound = playRound(playerSelection, computerSelection)
-        if (currentRound === "win") {
-            playerPoints++;
-            console.log("You won this round!");
-        } else if (currentRound === "lose") {
-            computerPoints++;
-            console.log("You lost this round.");
-        } else if (currentRound === "tie") {
-            console.log("It's a tie");
-        }
-    } 
-    if (playerPoints > computerPoints) {
-        console.log("You won the game! Lucky ducky!");
-        } else {
-            console.log("You lost. Better luck next time!");
+    //for (let i = 0; i < 5; i++) {
+        // const playerSelection = prompt("Rock, Paper, or Scissors?");
+        // console.log(playerSelection.toLowerCase());
+    const computerSelection = getComputerChoice();
+    console.log("Your competitor chose " + computerSelection);
+
+    let currentRound = playRound(playerSelection, computerSelection);
+
+    if (currentRound === "win") {
+        playerPoints++;
+        console.log("You won this round!");
+    } else if (currentRound === "lose") {
+        computerPoints++;
+        console.log("You lost this round.");
+    } else if (currentRound === "tie") {
+        console.log("It's a tie");
     }
+
+    //} 
+
+    if (playerPoints === 5) {
+         console.log("You won the game! Lucky ducky!");
+         } else if (computerPoints === 5) {
+             console.log("You lost. Better luck next time!");
+     }
 }
 
-game();
+let buttons = document.querySelectorAll(".selection");
+buttons.forEach(element => {
+   element.addEventListener('click', (event) => game(event));
+});
+
+
+   
