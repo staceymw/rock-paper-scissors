@@ -33,17 +33,18 @@ function playRound(playerSelection, computerSelection)
     }
 }
 
+let playerPoints = 0;
+let computerPoints = 0;
+
 function game(event) {
     const playerSelection = event.path[0].id; 
-    let playerPoints = 0;
-    let computerPoints = 0;
-
+    
     //for (let i = 0; i < 5; i++) {
         // const playerSelection = prompt("Rock, Paper, or Scissors?");
         // console.log(playerSelection.toLowerCase());
     const computerSelection = getComputerChoice();
     console.log("Your competitor chose " + computerSelection);
-
+    
     let currentRound = playRound(playerSelection, computerSelection);
 
     if (currentRound === "win") {
@@ -60,9 +61,9 @@ function game(event) {
 
     if (playerPoints === 5) {
          console.log("You won the game! Lucky ducky!");
-         } else if (computerPoints === 5) {
-             console.log("You lost. Better luck next time!");
-     }
+      } else if (computerPoints === 5) {
+          console.log("You lost. Better luck next time!");
+      }
 }
 
 let buttons = document.querySelectorAll(".selection");
