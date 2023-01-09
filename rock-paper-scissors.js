@@ -38,32 +38,60 @@ let computerPoints = 0;
 
 function game(event) {
     const playerSelection = event.path[0].id; 
-    
-    //for (let i = 0; i < 5; i++) {
-        // const playerSelection = prompt("Rock, Paper, or Scissors?");
-        // console.log(playerSelection.toLowerCase());
     const computerSelection = getComputerChoice();
-    console.log("Your competitor chose " + computerSelection);
-    
-    let currentRound = playRound(playerSelection, computerSelection);
+    const competitorChoice = document.getElementById("competitor-choice");
+    competitorChoice.innerHTML = "Your competitor chose " + computerSelection;
 
+    let currentRound = playRound(playerSelection, computerSelection);
+    calculateStore(currentRound);
+    handleEndGame(playerPoints, computerPoints);
+    
+}
+
+function calculateStore(currentRound) {
     if (currentRound === "win") {
         playerPoints++;
-        console.log("You won this round!");
+        //console.log("You won this round!");
+        const playerScore = document.getElementById("player-score");
+        playerScore.innerHTML = "Your Score: " + playerPoints;
     } else if (currentRound === "lose") {
         computerPoints++;
-        console.log("You lost this round.");
+        //console.log("You lost this round.");
+        const competitorScore = document.getElementById("competitor-score");
+        competitorScore.innerHTML = "Competitor Score: " + computerPoints;
     } else if (currentRound === "tie") {
         console.log("It's a tie");
     }
+}
 
-    //} 
-
+function handleEndGame(playerPoints, computerPoints) {
     if (playerPoints === 5) {
-         console.log("You won the game! Lucky ducky!");
-      } else if (computerPoints === 5) {
-          console.log("You lost. Better luck next time!");
-      }
+        //console.log("You won the game! Lucky ducky!");
+        const playerWins = document.getElementById("game-winner");
+        playerWins.innerHTML = "You won the game! Lucky Ducky!";
+
+        const endGame = document.querySelectorAll(".selection");
+        endGame.forEach(element => {
+           element.disabled = true;
+        });
+
+        const endMessage = document.getElementById("end-message");
+        endMessage.innerHTML = "Please refresh the page to play again!";
+       
+        
+     } else if (computerPoints === 5) {
+         //console.log("You lost. Better luck next time!");
+         const competitorWins = document.getElementById("game-winner");
+         competitorWins.innerHTML = "You lost. Better luck next time!";
+         const endGameTwo = document.querySelectorAll(".selection");
+         console.log(endGameTwo)
+         endGameTwo.forEach(element => {
+            element.disabled = true;
+         });
+         
+         const endMessage = document.getElementById("end-message");
+         endMessage.innerHTML = "Please refresh the page to play again!";
+     }
 }
 
 let buttons = document.querySelectorAll(".selection");
