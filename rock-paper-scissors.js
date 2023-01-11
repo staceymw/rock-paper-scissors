@@ -53,12 +53,12 @@ function calculateStore(currentRound) {
         playerPoints++;
         //console.log("You won this round!");
         const playerScore = document.getElementById("player-score");
-        playerScore.innerHTML = "Your Score: " + playerPoints;
+        playerScore.innerHTML = playerPoints;
     } else if (currentRound === "lose") {
         computerPoints++;
         //console.log("You lost this round.");
         const competitorScore = document.getElementById("competitor-score");
-        competitorScore.innerHTML = "Competitor Score: " + computerPoints;
+        competitorScore.innerHTML = computerPoints;
     } else if (currentRound === "tie") {
         console.log("It's a tie");
     }
@@ -85,8 +85,10 @@ function handleEndGame(playerPoints, computerPoints) {
          competitorWins.innerHTML = "You lost. Better luck next time!";
          const endGameTwo = document.querySelectorAll(".selection");
          console.log(endGameTwo)
+
+
          endGameTwo.forEach(element => {
-            element.disabled = true;
+            element.style.pointerEvents = 'none';
          });
          
          const endMessage = document.getElementById("end-message");
