@@ -1,0 +1,66 @@
+* {
+    font-family: "Roboto", Arial, Helvetica, sans-serif;
+    text-align: center;
+}
+
+#buttons {
+    display: flex;
+    justify-content: space-around;
+    
+}
+
+#rock, #paper, #scissors {
+    height: 100px;
+    padding: 10px;
+    font-family: 'Sofia Sans', sans-serif;
+    background-color: aquamarine;
+    border-radius: 10px;
+}
+
+#competitor-choice {
+    margin-bottom: 20px;
+}
+
+p {
+    font-size: large;
+    font-weight: bold;
+}
+
+#player-score, #competitor-score {
+    /*display: inline-block;*/
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    margin: 30px, 30px, 50px, 30px;
+    height: 50px;
+    width: 50px;
+    padding: 5px, 0, 0, 0;
+    border:3px solid black;
+}
+
+#results {
+    height: 150px;
+    border:3px solid black;
+    margin: 30px;
+}
+
+#competitor-score-wrapper, #player-score-wrapper {
+    /*display: inline-block;*/
+    text-align: center;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    
+}
+
+#score-wrapper {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+#game-winner, #end-message {
+    font-size: 30px;
+}
+
