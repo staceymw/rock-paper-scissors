@@ -72,8 +72,8 @@ function handleEndGame(playerPoints, computerPoints) {
 
         const endGame = document.querySelectorAll(".selection");
         endGame.forEach(element => {
-           element.disabled = true;
-        });
+            element.style.pointerEvents = 'none';
+         });
 
         const endMessage = document.getElementById("end-message");
         endMessage.innerHTML = "Please refresh the page to play again!";
